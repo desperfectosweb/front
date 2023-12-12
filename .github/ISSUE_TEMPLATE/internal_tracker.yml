@@ -1,0 +1,64 @@
+name: Historia de Usuario
+description: Plantilla para las Historis de Usuario, contendrá las tareas desgranadas de la historia.
+title: "[User Story]: "
+labels: ["kind/user story"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Descripción
+      description: Descripción de la historia de usuario
+    validations:
+      required:
+        true
+  - type: input
+    id: branch
+    attributes:
+      label: Rama
+      description: ¿Cuál es la rama que contendrá la historia de usuario? Si no se sabe reemplazalo con [TBD]
+      placeholder: f/
+    validations:
+      required: true
+  - type: textarea
+    id: requirements
+    attributes:
+      label: Requerimientos
+      description: Requerimientos que contiene la Historia de Usuario.
+      placeholder: |
+        * P0: El portal necesita una página de inicio
+        * P2: Los usuarios tendrán control por roles
+    validations:
+      required: true
+  - type: textarea
+    id: ux-issues
+    attributes:
+      label: Tareas de UX
+      description: |
+        Lista de tickets que UX trabajará.
+
+        Tip: Usar una lista con puntos enlazando los otros tickets.
+      placeholder: |
+        * #1234
+        * Mocks de diseño - Ticket TBD
+    validations:
+      required: true
+  - type: textarea
+    id: dev-issues
+    attributes:
+      label: Itemized Dev Issues
+      description: |
+        Lista de tickets que Desarrollo trabajará.
+
+        Tip: Usar una lista con puntos enlazando los otros tickets.
+      placeholder: |
+        * #1234
+        * Implement Table Page - Ticket TBD
+    validations:
+      required: true
+  - type: textarea
+    id: artifacts
+    attributes:
+      label: Otros documentos
+      description: Documentos adicionales que se necesiten para la historia de usuario.
+    validations:
+      required: false
