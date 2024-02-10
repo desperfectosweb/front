@@ -1,0 +1,8 @@
+.filter-container {
+    height: 100px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 1px black solid;
+}

@@ -1,0 +1,94 @@
+p {
+    margin: 0;
+}
+
+.usuario-container {
+    height: 100vh;
+    width: calc(100vw - 100px);
+    color: black;
+    display: grid;
+    grid-template-columns: [c-first] 12% [c-second] 35% [c-third] 6% [c-fourth] 35% [c-fifth] 12% [c-end];
+    grid-template-rows: [r-first] 15% [r-second] 15% [r-third] 5% [r-fourth] 50% [r-fifth] 15% [r-end];
+    
+}
+
+.usuario-header {
+    grid-column: c-second / span 1;
+    grid-row: r-second / span 1;
+    padding: 2rem;
+    border: 1px red solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+}
+
+.column-reportes {
+    grid-column: c-second / span 1;
+    grid-row: r-fourth / span 1;
+    border: 1px red solid;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items: flex-start;
+}
+
+.column-info {
+    grid-column: c-fourth / span 1;
+    grid-row: r-fourth / span 1;
+    border: 1px red solid;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items: flex-start;
+}
+
+.pfp-container {
+    height: 80px;
+    width: 80px;
+}
+
+.pfp-data {
+    height: 80px;
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.reportes-container {
+    height: 300px;
+    width: 100%;
+    border: 1px yellow solid;
+    border-radius: 1rem;
+}
+
+.points-container {
+    height: 150px;
+    width: 100%;
+    border: 1px purple solid;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.personal-info-container {
+    height: 300px;
+    width: 100%;
+    border: 1px green solid;
+    border-radius: 1rem;
+    display: flex;
+}
+
+.comments-conections-container {
+    height: 150px;
+    width: 100%;
+    border: 1px blue solid;
+    border-radius: 1rem;
+}
