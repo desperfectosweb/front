@@ -8,94 +8,55 @@ const mapContainerStyle = {
 };
 
 // Updated center coordinates for Barcelona, Spain
-const center = {
-  lat: 41.3851,
-  lng: 2.1734,
-};
+// const center = {
+//   lat: 41.3851,
+//   lng: 2.1734,
+// };
 const zoomLevel = 13;
 
 const options = {
   styles: [
-    { elementType: 'geometry', stylers: [{ color: '#242f3e' }] },
-    { elementType: 'labels.text.stroke', stylers: [{ color: '#242f3e' }] },
-    { elementType: 'labels.text.fill', stylers: [{ color: '#746855' }] },
     {
-      featureType: 'administrative.locality',
-      elementType: 'labels.text.fill',
-      stylers: [{ color: '#d59563' }],
+      featureType: 'all',
+      elementType: 'all',
+      stylers: [
+        { saturation: -20 } // Desatura todos los colores para dar un aspecto más apagado
+      ]
     },
     {
-      featureType: 'poi',
-      elementType: 'labels.text.fill',
-      stylers: [{ color: '#d59563' }],
+      featureType: 'road',
+      elementType: 'geometry',
+      stylers: [
+        { lightness: 100 }, // Hace las carreteras más claras
+        { visibility: 'simplified' } // Simplifica la visualización de las carreteras
+      ]
+    },
+    {
+      featureType: 'water',
+      elementType: 'geometry',
+      stylers: [
+        { hue: '#fff' }, 
+        { lightness: 50 } // Hace el color del agua más claro
+      ]
+    },
+    {
+      featureType: 'poi', // Puntos de interés
+      elementType: 'labels.icon',
+      stylers: [
+        { visibility: 'off' } // Oculta los íconos de los puntos de interés
+      ]
     },
     {
       featureType: 'poi.park',
       elementType: 'geometry',
-      stylers: [{ color: '#263c3f' }],
-    },
-    {
-      featureType: 'poi.park',
-      elementType: 'labels.text.fill',
-      stylers: [{ color: '#6b9a76' }],
-    },
-    {
-      featureType: 'road',
-      elementType: 'geometry',
-      stylers: [{ color: '#38414e' }],
-    },
-    {
-      featureType: 'road',
-      elementType: 'geometry.stroke',
-      stylers: [{ color: '#212a37' }],
-    },
-    {
-      featureType: 'road',
-      elementType: 'labels.text.fill',
-      stylers: [{ color: '#9ca5b3' }],
-    },
-    {
-      featureType: 'road.highway',
-      elementType: 'geometry',
-      stylers: [{ color: '#746855' }],
-    },
-    {
-      featureType: 'road.highway',
-      elementType: 'geometry.stroke',
-      stylers: [{ color: '#1f2835' }],
-    },
-    {
-      featureType: 'road.highway',
-      elementType: 'labels.text.fill',
-      stylers: [{ color: '#f3d19c' }],
-    },
-    {
-      featureType: 'transit',
-      elementType: 'geometry',
-      stylers: [{ color: '#2f3948' }],
-    },
-    {
-      featureType: 'transit.station',
-      elementType: 'labels.text.fill',
-      stylers: [{ color: '#d59563' }],
-    },
-    {
-      featureType: 'water',
-      elementType: 'geometry',
-      stylers: [{ color: '#17263c' }],
-    },
-    {
-      featureType: 'water',
-      elementType: 'labels.text.fill',
-      stylers: [{ color: '#515c6d' }],
-    },
-    {
-      featureType: 'water',
-      elementType: 'labels.text.stroke',
-      stylers: [{ color: '#17263c' }],
-    },
-  ],
+      stylers: [
+        { lightness: 60 } // Hace los parques más claros
+      ]
+    }
+    // Puedes seguir agregando más estilos para otros tipos de elementos
+  ]
 };
+
 
 
 interface Marker {
@@ -118,6 +79,8 @@ const MapComponent: React.FC = () => {
 
   const [markers, setMarkers] = useState<Marker[]>([]);
   const [selectedMarker, setSelectedMarker] = useState<Marker | null>(null);
+  const [center, setCenter] = useState({ lat: 41.3851, lng: 2.1734 }); // Estado inicial para el centro, puedes cambiarlo por una ubicación predeterminada
+
 
   const handleFilterChange = useCallback((filters: FilterState) => {
     // Implement your filtering logic here
@@ -142,6 +105,21 @@ const MapComponent: React.FC = () => {
     console.log('Submitting report for:', selectedMarker);
     setSelectedMarker(null);
   };
+  const goToCurrentLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setCenter({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          });
+        },
+        () => {
+          alert('No se pudo obtener la ubicación');
+        }
+      );
+    }
+  };
 
   if (loadError) return <div>Error loading maps</div>;
   if (!isLoaded) return <div>Loading Maps</div>;
@@ -149,6 +127,7 @@ const MapComponent: React.FC = () => {
   return (
     <section className='sct-map'>
       <FilterComponent onFilterChange={handleFilterChange} />
+      <button onClick={goToCurrentLocation}>Ir a mi ubicación</button> {/* Botón para ir a la ubicación actual */}
       <div className='div-map'>
         <GoogleMap
           mapContainerStyle={mapContainerStyle}
