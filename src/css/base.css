@@ -59,10 +59,19 @@ body {
 .sct-map {
   display: flex;
 }
-.sct-map .div-filter {
-  border: 1px solid red;
+.sct-map .filter-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+}
+.sct-map .div-container-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid red;
+  position: absolute;
+  right: 10px;
+  z-index: 1000;
 }/*# sourceMappingURL=base.css.map */
