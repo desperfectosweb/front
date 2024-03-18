@@ -47,10 +47,11 @@ const Sidebar = (props: Props) => {
         <Link to="/home/premios">
           <div className="link">
             <img src={premiosLogo} style={{width: "auto", height: "auto", padding: 0}} className="logo" alt="Premios logo" />
-            Reportes
+            Premios
           </div>
         </Link>
       </div>
+      <div className='logo-container'></div>
 
       {/* <button onClick={props.toggleSidebar} className="sidebar-toggle">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-list" viewBox="0 0 16 16">

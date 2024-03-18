@@ -1,0 +1,22 @@
+
+.slider-container {
+    /* position: relative; */
+    margin: 2rem 0.5rem;
+    /* padding: 0.5rem 0; */
+}
+
+/* .slider-btn {
+    width: 2rem;
+    height: 2rem;
+    background-color: rgba(255, 255, 255, 0.100);
+    cursor: pointer;
+    color: #01be96;
+    border: none;
+    position: absolute;
+    top: 45%;
+    right: -1rem;
+}
+
+.back {
+    left: -1rem;
+} */

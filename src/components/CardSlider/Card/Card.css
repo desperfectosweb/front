@@ -1,0 +1,63 @@
+.card-container {
+    height: auto;
+    /* background-color: #4e5156; */
+    margin: 0.5rem 0.5rem;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
+    /* position: relative; */
+    /* overflow: hidden; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.selected-card-container {
+    height: auto;
+    background: var(--desperfectos);
+    color: white;
+    margin: 0.5rem 0.5rem;
+    padding: 1rem;    
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
+    /* position: relative; */
+    /* overflow: hidden; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+
+.report-data-entry {
+    width: 100%;
+    text-justify: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.flechas-span {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.flechas-span > img {
+    fill: var(--desperfectos); 
+}
+
+.selected-flechas-span {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    
+}
