@@ -3,9 +3,9 @@ import Home from './pages/Home';
 import UserHome from './pages/UserHome';
 import ReportHome from './pages/Reportes';
 import PremiosHome from './pages/PremiosHome';
-// import PreguntaVehiculos from './pages/VehiculoDeseado';
+import DataFetcher from './api/ DataFetcher';
 
-// import NosotrosPages from './pages/Nosotros';
+
 
 
 const AppRoutes = () => {
@@ -15,6 +15,7 @@ const AppRoutes = () => {
       <Route path="/cuenta" element={<UserHome />} />
       <Route path="/reportes" element={<ReportHome />} />
       <Route path="/premios" element={<PremiosHome />} />
+      <Route path="/fetch-data" element={<DataFetcher />} />
     </Routes>
   );
 };
