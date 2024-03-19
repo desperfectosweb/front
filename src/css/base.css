@@ -70,8 +70,25 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid red;
   position: absolute;
   right: 10px;
   z-index: 1000;
+}
+.sct-map .report-form {
+  position: absolute;
+  top: 50%;
+  margin-left: 10px;
+}
+.sct-map .report-form form {
+  padding: 20px;
+  width: 20rem;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+}
+.sct-map .report-form form .lb-descripcion {
+  display: flex;
+  flex-direction: column;
 }/*# sourceMappingURL=base.css.map */

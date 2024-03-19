@@ -4,8 +4,7 @@ import FilterComponent from './FilterComponent'; // Ensure this path matches you
 import SearchAndZoomComponent from './SearchAndZoomComponent'; // Ensure this path matches your project structure
 import ReportsComponent from './ReportsComponent'; // Ensure this path matches your project structure
 import { Report } from '../types'; // Ensure this path matches your project structure
-
-
+import ReportForm from './ReportForm'; // Ensure this path matches your project structure
 // icons 
 import iconLocation from '../imgs/icons/location.svg';
 
@@ -231,6 +230,8 @@ const MapComponent: React.FC = () => {
 
   // Ajusta según la estructura de tus marcadores
 
+  
+
 
   return (
     <section className='sct-map'>
@@ -290,25 +291,7 @@ const MapComponent: React.FC = () => {
         )}   */}
 
         {isFormVisible && (
-          <div className='div-report'>
-            <input
-              type="text"
-              value={newReportDescription}
-              onChange={(e) => setNewReportDescription(e.target.value)}
-              placeholder="Descripción del reporte"
-            />
-            <input
-              type="text"
-              value={newReportSeverity}
-              onChange={(e) => setNewReportSeverity(e.target.value)}
-              placeholder="Severidad del reporte"
-            />
-            <button onClick={() => {
-              console.log('Añadiendo reporte...');
-              setIsFormVisible(false); // Suponiendo que quieres ocultar el formulario después de añadir el reporte
-              // Aquí deberías implementar la lógica para añadir el reporte efectivamente
-            }}>Añadir Reporte</button>
-          </div>
+          <ReportForm onSubmit={onAddReport} />
         )}
 
 
