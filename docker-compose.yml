@@ -9,8 +9,8 @@ services:
     command: npm run dev
     volumes:
       - .:/app
-      - /app/node_modules # maintain node_modules when closing the container
-networks:
-  default:
-    name: desperfectosweb-network
-    external: true
+      - /app/node_modules
+    environment:
+      - API_URL=http://desperfectosweb-back:8080
+    networks:
+      - default
