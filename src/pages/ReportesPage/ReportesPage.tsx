@@ -40,7 +40,7 @@ const ReportesPage = (props: Props) => {
   }
 
   return (
-    <div style={{position: "fixed", left: 100, top: 0}}>
+    <div >
       <ReportFilter />
       <div className="reportes-container">
         <div className="activos-container">
@@ -54,7 +54,12 @@ const ReportesPage = (props: Props) => {
         </div>
         <div className="separator"></div>
         <div className="historial-container">
-          <h6>Historial de reportes</h6>
+          <h4 style={{ margin: 0 }}>
+            Historial de reportes
+          </h4>
+          <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: 'space-between', alignItems: "center"}}>
+            {historialList.slice(0, 3).map((report, index) => {return <ReportCard key={index} id={index} info={report} clickHandler={handleCardSelection}/>})}
+          </div>
         </div>
       </div>
     </div>

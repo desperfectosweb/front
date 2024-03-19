@@ -4,5 +4,71 @@
     /* position: absolute;
     top: 0;
     right: 0; */
-    border: 1px black solid;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-bottom: 0.75rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
 }
+
+.filter-field {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.user-span {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.pfp-icon {
+    height: 16px;
+    width: 16px;
+    border: 1px solid var(--desperfectos);
+    border-radius: 8px;
+}
+
+.fecha-select {
+    width: 110px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.gravedad-select {
+    width: 130px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+/*-------------------------------------------------*/
+
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100px;
+    height: 7px;
+    background: grey;
+    border-radius: 5px;
+    background-image: var(--desperfectos);
+    background-repeat: no-repeat;
+  }
+  
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: var(--desperfectos);
+    cursor: pointer;
+    box-shadow: 0 0 2px 0 #555;
+    transition: background 0.3s ease-in-out;
+  }

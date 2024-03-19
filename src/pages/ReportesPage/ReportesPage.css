@@ -1,7 +1,9 @@
 .reportes-container {
     width: calc(100vw - 100px);
-    position: absolute;
-    left: 100;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    /* position: absolute;
+    left: 100; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,7 +16,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    gap: 2rem;
+    gap: 1rem;
 }
 
 .separator {
@@ -22,8 +24,14 @@
     height: 2px;
     background: var(--desperfectos);
     border-radius: 1px;
+    margin: 0.75rem 0;
 }
 
 .historial-container {
     width: 70vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
 }

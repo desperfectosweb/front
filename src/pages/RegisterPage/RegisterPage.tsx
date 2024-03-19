@@ -29,6 +29,7 @@ const RegisterPage = (props: Props) => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
     myHeaders.append("X-API-Key", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6eyJpZCI6IjY1ZWUxNDkyMGNiNmI4NzUwMDJmYzBmZiIsImVtYWlsIjoiYWRtaW5AdGVzdC5jb20iLCJ1c2VybmFtZSI6InRlc3QiLCJyb2xlIjozfSwiaWF0IjoxNzEwMTAyNDc4LCJleHAiOjE3MTAxODg4Nzh9.tg0ArR3mH-Nu_xGe1YKKT1yPxAXruCxl7JIgeMo634w");
+    myHeaders.append("Access-Control-Allow-Origin", apiAddress);
 
     const urlencoded = new URLSearchParams();
     urlencoded.append("email", target.email.value);
@@ -38,6 +39,7 @@ const RegisterPage = (props: Props) => {
     urlencoded.append("internalUser", "true");
 
     const requestOptions: RequestInit = {
+      mode: "cors",
       method: "POST",
       headers: myHeaders,
       body: urlencoded,
