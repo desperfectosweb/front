@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react';
+import { config } from '../config';
 
 const ReportForm = ({ onSubmit }) => {
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
-  // Use an object to handle multiple files separately
   const [files, setFiles] = useState({ file1: null, file2: null, file3: null });
   const fileInputRefs = {
     file1: useRef(null),
@@ -15,14 +15,66 @@ const ReportForm = ({ onSubmit }) => {
     setFiles(prevFiles => ({ ...prevFiles, [name]: event.target.files[0] }));
   };
 
-  const handleFormSubmit = (event) => {
+  const sendJsonData = async (data) => {
+    const apiUrl = `${config.apiUrl}/tu-endpoint-json`;
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6eyJpZCI6IjY1ZWUxNzJjODMyMzNhZGI2OWNiMjhjZSIsImVtYWlsIjoiYWRtaW5AdGVzdC5jb20iLCJ1c2VybmFtZSI6InRlc3QiLCJyb2xlIjozfSwiaWF0IjoxNzEwMTAyNjM4LCJleHAiOjE3MTAxODkwMzh9.wjdeA5USVj-f0qp9n21Tvn_GJr-FXMPXiEL-3GIQ0vw'; 
+
+    try {
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log(result);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
-    // Process the form data here, including the files
-    onSubmit({ category, description, files });
-    // Reset the form fields after submission
-    setCategory('');
-    setDescription('');
-    setFiles({ file1: null, file2: null, file3: null });
+
+    if (!files.file1 && !files.file2 && !files.file3) {
+      const data = {
+        category,
+        description,
+      };
+      await sendJsonData(data);
+    } else {
+      const formData = new FormData();
+      formData.append('category', category);
+      formData.append('description', description);
+      
+      Object.entries(files).forEach(([key, value]) => {
+        if (value) formData.append(key, value);
+      });
+
+      try {
+        const apiUrl = `${config.apiUrl}/api/reports`;
+        const response = await fetch(apiUrl, {
+          method: 'POST',
+          body: formData,
+        });
+    
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+    
+        const result = await response.json();
+        console.log(result);
+      } catch (error) {
+        console.error('Error submitting the form:', error);
+      }
+    }
   };
 
   const handleFileInputClick = (name) => {
@@ -51,7 +103,7 @@ const ReportForm = ({ onSubmit }) => {
         <div className='file-upload-container'>
           <p>Evidencias de Desperfectos</p>
           <p>Adjuntar Foto</p>
-          {Object.keys(files).map((fileKey, index) => (
+          {Object.keys(files).map((fileKey) => (
             <React.Fragment key={fileKey}>
               <button type="button" onClick={() => handleFileInputClick(fileKey)}>
                 +
@@ -65,7 +117,6 @@ const ReportForm = ({ onSubmit }) => {
             </React.Fragment>
           ))}
         </div>
-        {/* Display list of selected file names */}
         <div className='file-list'>
           {Object.values(files).map((file, index) => file && (
             <div key={index}>{file.name}</div>
